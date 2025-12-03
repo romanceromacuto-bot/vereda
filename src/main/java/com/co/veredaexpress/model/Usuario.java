@@ -31,6 +31,9 @@ public class Usuario {
     @Column(nullable = false)
     private Boolean activo = true;
     
+    @Column(name = "fisical_address", length = 255)
+    private String fisicaladdress;
+    
     @PrePersist
     protected void onCreate() {
         fechaCreacion = LocalDateTime.now();
