@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/servicios")
+@RequestMapping("/servicios")
 @Tag(name = "Servicios", description = "API para gestión de servicios")
 public class ServicioController {
     

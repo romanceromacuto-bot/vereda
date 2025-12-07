@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/pagos")
+@RequestMapping("/pagos")
 @Tag(name = "Pagos", description = "API para gestión de pagos")
 public class PagoController {
     
