@@ -14,4 +14,8 @@ public class PedidoCreateRequest {
     private Long servicioId;
     
     private LocalDateTime fechaEntrega;
+    
+    private String localizacionEntrega;
+    
+    private String localizacionRecoleccion;
 }

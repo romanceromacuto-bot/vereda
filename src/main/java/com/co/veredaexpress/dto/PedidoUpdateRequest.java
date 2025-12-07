@@ -9,4 +9,6 @@ public class PedidoUpdateRequest {
     
     private EstadoPedido estado;
     private LocalDateTime fechaEntrega;
+    private String localizacionEntrega;
+    private String localizacionRecoleccion;
 }

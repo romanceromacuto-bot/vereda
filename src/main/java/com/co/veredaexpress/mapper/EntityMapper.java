@@ -33,6 +33,8 @@ public class EntityMapper {
         if (pedido.getPago() != null) {
             response.setPagoId(pedido.getPago().getId());
         }
+        response.setLocalizacionEntrega(pedido.getLocalizacionEntrega());
+        response.setLocalizacionRecoleccion(pedido.getLocalizacionRecoleccion());
         return response;
     }
     

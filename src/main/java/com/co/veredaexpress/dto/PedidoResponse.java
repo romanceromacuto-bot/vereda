@@ -17,4 +17,6 @@ public class PedidoResponse {
     private Long servicioId;
     private String servicioNombre;
     private Long pagoId;
+    private String localizacionEntrega;
+    private String localizacionRecoleccion;
 }

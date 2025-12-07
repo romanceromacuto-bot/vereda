@@ -33,6 +33,8 @@ public class PedidoService {
         pedido.setUsuario(usuario);
         pedido.setServicio(servicio);
         pedido.setFechaEntrega(request.getFechaEntrega());
+        pedido.setLocalizacionEntrega(request.getLocalizacionEntrega());
+        pedido.setLocalizacionRecoleccion(request.getLocalizacionRecoleccion());
         
         return pedidoRepository.save(pedido);
     }
@@ -46,6 +48,12 @@ public class PedidoService {
                 }
                 if (request.getFechaEntrega() != null) {
                     pedido.setFechaEntrega(request.getFechaEntrega());
+                }
+                if (request.getLocalizacionEntrega() != null) {
+                    pedido.setLocalizacionEntrega(request.getLocalizacionEntrega());
+                }
+                if (request.getLocalizacionRecoleccion() != null) {
+                    pedido.setLocalizacionRecoleccion(request.getLocalizacionRecoleccion());
                 }
                 return pedidoRepository.save(pedido);
             });

@@ -57,31 +57,30 @@ spring.datasource.password=tu_password
 ## Documentación API - Swagger
 
 ### Acceder a Swagger UI
-- **Swagger UI**: http://localhost:8080/swagger-ui.html
-- **Swagger UI (alternativo)**: http://localhost:8080/swagger-ui/index.html
-- **OpenAPI JSON**: http://localhost:8080/v3/api-docs
+- **Swagger UI**: http://localhost:8080/api/v0/swagger-ui/index.html
+- **OpenAPI JSON**: http://localhost:8080/api/v0/v3/api-docs
 
 ### APIs Disponibles
 
 #### Usuarios
-- `POST /api/usuarios/registro` - Registrar usuario
-- `POST /api/usuarios/login` - Iniciar sesión
+- `POST /api/v0/usuarios/registro` - Registrar usuario
+- `POST /api/v0/usuarios/login` - Iniciar sesión
 
 #### Pedidos
-- `POST /api/pedidos` - Crear pedido
-- `PUT /api/pedidos/{id}` - Actualizar pedido
-- `GET /api/pedidos/{id}` - Obtener pedido por ID
-- `GET /api/pedidos/usuario/{usuarioId}` - Obtener pedidos por usuario
+- `POST /api/v0/pedidos` - Crear pedido
+- `PUT /api/v0/pedidos/{id}` - Actualizar pedido
+- `GET /api/v0/pedidos/{id}` - Obtener pedido por ID
+- `GET /api/v0/pedidos/usuario/{usuarioId}` - Obtener pedidos por usuario
 
 #### Servicios
-- `POST /api/servicios` - Crear servicio
-- `GET /api/servicios` - Obtener todos los servicios
-- `GET /api/servicios/{id}` - Obtener servicio por ID
-- `DELETE /api/servicios/{id}` - Eliminar servicio
+- `POST /api/v0/servicios` - Crear servicio
+- `GET /api/v0/servicios` - Obtener todos los servicios
+- `GET /api/v0/servicios/{id}` - Obtener servicio por ID
+- `DELETE /api/v0/servicios/{id}` - Eliminar servicio
 
 #### Pagos
-- `PUT /api/pagos/{id}` - Actualizar pago
-- `GET /api/pagos/{id}` - Obtener pago por ID
+- `PUT /api/v0/pagos/{id}` - Actualizar pago
+- `GET /api/v0/pagos/{id}` - Obtener pago por ID
 
 ## Ejecutar el Proyecto
 
@@ -89,7 +88,7 @@ spring.datasource.password=tu_password
 mvn spring-boot:run
 ```
 
-Luego accede a Swagger UI en: http://localhost:8080/swagger-ui.html
+Luego accede a Swagger UI en: http://localhost:8080/api/v0/swagger-ui/index.html
 
 ## Características del Sistema
 

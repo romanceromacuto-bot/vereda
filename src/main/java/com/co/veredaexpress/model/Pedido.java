@@ -39,6 +39,12 @@ public class Pedido {
     @JoinColumn(name = "pago_id")
     private Pago pago;
     
+    @Column(name = "localizacion_entrega")
+    private String localizacionEntrega;
+    
+    @Column(name = "localizacion_recoleccion")
+    private String localizacionRecoleccion;
+    
     @PrePersist
     protected void onCreate() {
         fechaCreacion = LocalDateTime.now();
