@@ -1,69 +1,108 @@
-# Sistema de Login de Usuarios - Vereda Express
+# Vereda Express - Sistema de Gestión de Pedidos
 
-## Estructura MVC Creada
+## Estructura del Proyecto
 
 ```
 src/main/java/com/co/veredaexpress/
 ├── model/
-│   └── Usuario.java          (Entidad JPA)
+│   ├── Usuario.java
+│   ├── Pedido.java
+│   ├── Pago.java
+│   ├── Servicio.java
+│   └── EstadoPedido.java (Enum)
 ├── repository/
-│   └── UsuarioRepository.java (Acceso a datos)
+│   ├── UsuarioRepository.java
+│   ├── PedidoRepository.java
+│   ├── PagoRepository.java
+│   └── ServicioRepository.java
 ├── service/
-│   └── UsuarioService.java    (Lógica de negocio)
+│   ├── UsuarioService.java
+│   ├── PedidoService.java
+│   ├── PagoService.java
+│   └── ServicioService.java
 ├── controller/
-│   └── UsuarioController.java (Endpoints REST)
-└── dto/
-    ├── LoginRequest.java
-    └── RegistroRequest.java
+│   ├── UsuarioController.java
+│   ├── PedidoController.java
+│   ├── PagoController.java
+│   └── ServicioController.java
+├── dto/
+│   ├── LoginRequest.java
+│   ├── RegistroRequest.java
+│   ├── UsuarioResponse.java
+│   ├── PedidoCreateRequest.java
+│   ├── PedidoUpdateRequest.java
+│   ├── PedidoResponse.java
+│   ├── ServicioRequest.java
+│   ├── ServicioResponse.java
+│   ├── PagoUpdateRequest.java
+│   └── PagoResponse.java
+└── mapper/
+    └── EntityMapper.java
 ```
 
 ## Configuración de Base de Datos
 
-1. Crear base de datos MySQL (o se creará automáticamente):
+1. Crear base de datos PostgreSQL:
 ```sql
 CREATE DATABASE veredaexpress_db;
 ```
 
 2. Configurar credenciales en `application.properties`:
 ```properties
-spring.datasource.username=root
+spring.datasource.url=jdbc:postgresql://localhost:5432/veredaexpress_db
+spring.datasource.username=tu_usuario
 spring.datasource.password=tu_password
 ```
 
-## Endpoints Disponibles
+## Documentación API - Swagger
 
-### 1. Registro de Usuario
-**POST** `http://localhost:8080/api/usuarios/registro`
+### Acceder a Swagger UI
+- **Swagger UI**: http://localhost:8080/swagger-ui.html
+- **Swagger UI (alternativo)**: http://localhost:8080/swagger-ui/index.html
+- **OpenAPI JSON**: http://localhost:8080/v3/api-docs
 
-Body (JSON):
-```json
-{
-  "username": "usuario1",
-  "password": "123456",
-  "email": "usuario1@example.com"
-}
-```
+### APIs Disponibles
 
-### 2. Login de Usuario
-**POST** `http://localhost:8080/api/usuarios/login`
+#### Usuarios
+- `POST /api/usuarios/registro` - Registrar usuario
+- `POST /api/usuarios/login` - Iniciar sesión
 
-Body (JSON):
-```json
-{
-  "username": "usuario1",
-  "password": "123456"
-}
-```
+#### Pedidos
+- `POST /api/pedidos` - Crear pedido
+- `PUT /api/pedidos/{id}` - Actualizar pedido
+- `GET /api/pedidos/{id}` - Obtener pedido por ID
+- `GET /api/pedidos/usuario/{usuarioId}` - Obtener pedidos por usuario
+
+#### Servicios
+- `POST /api/servicios` - Crear servicio
+- `GET /api/servicios` - Obtener todos los servicios
+- `GET /api/servicios/{id}` - Obtener servicio por ID
+- `DELETE /api/servicios/{id}` - Eliminar servicio
+
+#### Pagos
+- `PUT /api/pagos/{id}` - Actualizar pago
+- `GET /api/pagos/{id}` - Obtener pago por ID
 
 ## Ejecutar el Proyecto
 
 ```bash
-mvnw spring-boot:run
+mvn spring-boot:run
 ```
+
+Luego accede a Swagger UI en: http://localhost:8080/swagger-ui.html
+
+## Características del Sistema
+
+- **DTOs**: Protección de entidades del dominio
+- **Validaciones**: Validación automática con Bean Validation
+- **Documentación**: Swagger/OpenAPI integrado
+- **Relaciones**: Usuario → Pedidos (1:N), Pedido → Servicio (N:1), Pedido → Pago (1:1)
+- **Estados**: Enum para estados de pedido (CREADO, PAGADO, EN_REPARTO, ENTREGADO)
+- **Mapeo**: Conversión automática entre entidades y DTOs
 
 ## Notas Importantes
 
-- La tabla `usuarios` se creará automáticamente en la base de datos
-- Las contraseñas se guardan en texto plano (solo para educación)
-- Para producción, implementar BCrypt para encriptar contraseñas
-- El sistema registra la fecha de creación y último acceso automáticamente
+- Las tablas se crean automáticamente con JPA/Hibernate
+- Sistema completo de gestión de pedidos y servicios
+- Arquitectura limpia con separación de responsabilidades
+- Para producción: implementar seguridad (JWT, BCrypt, etc.)
